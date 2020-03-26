@@ -2,17 +2,22 @@ package com.test.pokedex.Activities
 
 import android.content.Context
 import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.util.Log
 import android.view.Gravity
+import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.google.android.material.chip.Chip
+import com.google.android.material.chip.ChipDrawable
 import com.google.gson.JsonObject
 import com.koushikdutta.ion.Ion
 import com.test.pokedex.R
@@ -113,11 +118,13 @@ class ActivityDetails : AppCompatActivity() {
     private fun addType(type_name: String){
         val parent = R.id.layout_type
         val linearLayout: LinearLayout = findViewById(parent)
-        var type = Chip(this)
+        linearLayout.removeAllViews()
+        var type = Chip(this) // Crashea caundo Creo el chip D:
+
         type.text = type_name
-        type.setBackgroundColor(Color.parseColor("abcdefg"))
+        type.width = WRAP_CONTENT
+//        @RequiresApi(Build.VERSION_CODES.M)
+  //      type.chipBackgroundColor = getColorStateList(Color.parseColor("abcdefg") as Int)
         linearLayout.addView(type)
     }
-
-
 }
