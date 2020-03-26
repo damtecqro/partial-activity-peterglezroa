@@ -28,18 +28,18 @@ class ActivityList : AppCompatActivity() {
         setContentView(R.layout.activity_list)
         setSupportActionBar(toolbar)
 
-        initializeCoponents()
+        initializeComponents()
         initializeListeners()
         initializeData()
 
 
         fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+            Snackbar.make(view, "Please help D:", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
         }
     }
 
-    fun initializeCoponents(){
+    fun initializeComponents(){
 
     }
 
