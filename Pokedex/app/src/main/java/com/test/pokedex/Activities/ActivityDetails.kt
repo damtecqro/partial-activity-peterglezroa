@@ -1,6 +1,7 @@
 package com.test.pokedex.Activities
 
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.util.Log
@@ -11,6 +12,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.google.android.material.chip.Chip
 import com.google.gson.JsonObject
 import com.koushikdutta.ion.Ion
 import com.test.pokedex.R
@@ -63,6 +65,7 @@ class ActivityDetails : AppCompatActivity() {
                 val type = types.get(i).asJsonObject.get("type").asJsonObject
                 val t_name = type.get("name").toString().replace("\"", "").toUpperCase()
                 addTextToLayout(t_name, R.id.layout_type)
+//                addType(t_name)
             }
         }
 
@@ -102,8 +105,17 @@ class ActivityDetails : AppCompatActivity() {
     private fun addTextToLayout(text: String, parent: Int){
         val text_formated = text.replace("\"","").toUpperCase()
         val linearLayout: LinearLayout = findViewById(parent)
-        var type = TextView(this)
-        type.text = text_formated
+        var v = TextView(this)
+        v.text = text_formated
+        linearLayout.addView(v)
+    }
+
+    private fun addType(type_name: String){
+        val parent = R.id.layout_type
+        val linearLayout: LinearLayout = findViewById(parent)
+        var type = Chip(this)
+        type.text = type_name
+        type.setBackgroundColor(Color.parseColor("abcdefg"))
         linearLayout.addView(type)
     }
 
